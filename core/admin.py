@@ -32,8 +32,8 @@ class ResultAdmin(admin.ModelAdmin):
     list_per_page=40;
     actions_on_bottom = True
     ordering=('-lst_dt',)
-   
-    
+
+
     
 admin.site.register(Build);
 admin.site.register(Device);
