@@ -74,6 +74,13 @@ DATABASES = {
         'HOST': 'admin',# Set to empty string for localhost. Not used with sqlite3.
         'PORT': 'admin',# Set to empty string for default. Not used with sqlite3.
     }
+#             ,
+#    'builds': {
+#        'NAME': 'user_data',
+#        'ENGINE': 'django.db.backends.mysql',
+#        'USER': 'mysql_user',
+#        'PASSWORD': 'superS3cret'
+#    },
 }
 
 # Internationalization

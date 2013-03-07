@@ -8,10 +8,10 @@ class TestCaseInsertRequest(forms.Form):
         (u'GPU',u'gpu'),
         (u'DIRECT',u'direct'),
     )
-    release_candidate_number= forms.CharField(max_length="15");
-    render_mode = forms.ChoiceField(choices=RENDER_MODE,label="render mode");
-    devices=forms.ModelMultipleChoiceField(queryset=Device.objects.all());
-    build=forms.ModelChoiceField(queryset=Build.objects.all());
+    release_candidate_number= forms.CharField(max_length="15",required=True);
+    render_mode = forms.ChoiceField(choices=RENDER_MODE,label="render mode",required=True);
+    devices=forms.ModelMultipleChoiceField(queryset=Device.objects.all(),required=True);
+    build=forms.ModelChoiceField(queryset=Build.objects.all(),required=True);
     
     
     

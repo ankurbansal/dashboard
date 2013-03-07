@@ -19,6 +19,8 @@ class TestCaseAdmin(admin.ModelAdmin):
     change_list_template="admin/custom_change_list.html"
     actions=[admin_methods.mark_Pass,admin_methods.mark_Fail]
     def changelist_view(self, request, extra_context=None):
+        print request 
+        print request.
         formInfo= form.TestCaseInsertRequest();
         extra_context = {}
         extra_context['input_form']= formInfo;

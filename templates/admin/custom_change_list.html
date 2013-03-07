@@ -85,6 +85,7 @@
 
       <form id="changelist-form" action="" method="post"{% if cl.formset.is_multipart %} enctype="multipart/form-data"{% endif %}>{% csrf_token %}
       <br>
+      	{{input_form.errors}}
  	    {{ input_form.as_table }}
       <br>
      
