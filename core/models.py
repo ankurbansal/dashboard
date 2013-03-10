@@ -1,5 +1,6 @@
 from django.db import models
 from random import choice
+from test.test_imageop import MAX_LEN
 
 # Create your models here.
 class TestCase(models.Model):
@@ -76,7 +77,9 @@ class Result(models.Model):
     outcome_result=models.BooleanField();
     test_case=models.ForeignKey(TestCase);
     test_case_name= models.CharField(max_length="20");
-    build = models.ForeignKey(Build,);
+    build = models.ForeignKey(Build);
+    device = models.ForeignKey(Device)
+    device_info=models.CharField(max_length='20')
     build_number=models.CharField(max_length="20");
     render_mode=models.CharField(max_length="20");
     release_number=models.CharField(max_length="30");

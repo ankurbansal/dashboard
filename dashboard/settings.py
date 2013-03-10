@@ -36,7 +36,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-    'tooling'
+    'tooling',
+    'game'
 )
 
 
@@ -68,7 +69,7 @@ DATABASES = {
 #        'PORT': '3306' ,
 #        'USER': 'root' ,
 #        'PASSWORD': 'sakshi'
-        'NAME': r'C:/Users/sakjain/Desktop/workspace/dashboard/resources/dashboard.db',# Or path to database file if using sqlite3.
+        'NAME': r'C:/Users/sakshi/Documents/GitHub/dashboard/resources/dashboard.db',# Or path to database file if using sqlite3.
         'USER': 'admin',# Not used with sqlite3.
         'PASSWORD': 'admin',# Not used with sqlite3.
         'HOST': 'admin',# Set to empty string for localhost. Not used with sqlite3.
@@ -102,10 +103,24 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS=(
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    r'C:/Users/sakshi/Documents/GitHub/dashboard/static',
+)
+
+STATICFILES_FINDERS=(
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+)
+
+
 TEMPLATE_DIRS=(
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "C:/Users/sakjain/Desktop/workspace/dashboard/templates/",
+    "C:/Users/sakshi/Documents/GitHub/dashboard/templates/",
     
 )

@@ -36,6 +36,8 @@ def mark(modeladmin,request,queryset,bool_outcome):
                     result.test_case_name=obj.swfName;
                     result.test_case=obj
                     result.build=build;
+                    result.device=devices
+                    result.device_info=devices.name+devices.OS_version
                     result.outcome_result=bool_outcome;
                     obj.outcome=bool_outcome;
                     obj.lst_dt=timezone.now().date();

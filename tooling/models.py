@@ -1,5 +1,5 @@
 from django.db import models
-from core.models import Build
+from core.models import Build, Device
 # Create your models here.
 class Tooling(models.Model):
     tooling_id =models.AutoField(primary_key=True);

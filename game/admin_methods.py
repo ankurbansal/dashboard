@@ -3,11 +3,10 @@ Created on Mar 3, 2013
 
 @author: ankbansa
 '''
-from django.contrib.auth.models import User
-from django.shortcuts import render_to_response
-from tooling import form
-from tooling.models import ToolingResult
+
 from django.utils import timezone
+from game import form
+from game.models import GameResult
 
 
 
@@ -15,34 +14,41 @@ from django.utils import timezone
 def mark(modeladmin,request,queryset,bool_outcome):
    
     if request.method == 'POST': # If the form has been submitted...
-        requestForm = form.ToolingInsertRequest(request.POST) # A form bound to the POST data
+        requestForm = form.GameInsertRequest(request.POST) # A form bound to the POST data
         if requestForm.is_valid():
             requestForm.clean();
              
             
 #            print requestForm;
             release_candidate_number = requestForm.cleaned_data['release_candidate_number'];
+            render_mode = requestForm.cleaned_data['render_mode'];
             target=requestForm.cleaned_data['target'];
             devices=requestForm.cleaned_data['devices'];
             build=requestForm.cleaned_data['build'];
           
-#            print build
-#            print type(build)
+            print build
+            print devices
+            print devices.name
+            print devices.OS_version
+            print type(build)
+            print type(devices)
 #            print build.number
             num_testCase=0;
 #            print release_candidate_number,target,devices,build;
             for obj in queryset:
                 print obj
-                result = ToolingResult();
+                result = GameResult();
                 result.release_number=release_candidate_number;
-                result.tooling_ide=obj.ide_platform;
-                result.tooling=obj
-                result.build=build;
+                result.game=obj
+                result.game_name=obj.game_name;
+                result.build=build
                 result.outcome_result=bool_outcome;
-#                obj.outcome=bool_outcome;
-#                obj.lst_dt=timezone.now().date();
+                result.device=devices
+                result.device_info=devices.name
+                obj.outcome=bool_outcome;
+                obj.lst_dt=timezone.now().date();
                 result.lst_user=request.user.username;
-                result.build_number=build.number;
+                result.build_number=build.number;  
                 result.cr_dt=timezone.now().date();
                 result.deleted_flag=False;
                 result.lst_user=request.user.username;
@@ -77,8 +83,11 @@ def mark(modeladmin,request,queryset,bool_outcome):
                     if tmpTarget == "ipa_debug_interpreter_simulator":
                         obj.ipa_debug_interpreter_simulator=bool_outcome;
                         result.target+=' ' + 'ipa_debug_interpreter_simulator'
+                        
                 obj.save();
+                print 'object save'
                 result.save();
+                print 'result save'
                 modeladmin.message_user(request, "%s successfully marked as Pass." % num_testCase)
                 
                 

@@ -20,7 +20,7 @@ class TestCaseAdmin(admin.ModelAdmin):
     actions=[admin_methods.mark_Pass,admin_methods.mark_Fail]
     def changelist_view(self, request, extra_context=None):
         print request 
-        print request.
+        print request
         formInfo= form.TestCaseInsertRequest();
         extra_context = {}
         extra_context['input_form']= formInfo;
@@ -30,7 +30,7 @@ class TestCaseAdmin(admin.ModelAdmin):
 class ResultAdmin(admin.ModelAdmin):
     list_display=('result_id',
 #                  'test_path',
-                  'test_case_name','build_number','render_mode','outcome_result','release_number','lst_user','lst_dt')
+                  'test_case_name','build_number','device_info','render_mode','outcome_result','release_number','lst_user','lst_dt')
     list_per_page=40;
     actions_on_bottom = True
     ordering=('-lst_dt',)
