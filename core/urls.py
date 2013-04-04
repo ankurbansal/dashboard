@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from bridge import script
+from bridge import script, featurescript
 
 
 urlpatterns = patterns('',

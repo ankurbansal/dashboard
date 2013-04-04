@@ -4,7 +4,7 @@ from test.test_imageop import MAX_LEN
 
 # Create your models here.
 class TestCase(models.Model):
-    test_id= models.AutoField(primary_key=True);
+#    test_id= models.AutoField(primary_key=True);
 #   test_name= models.TextField(max_length=400);
     test_path= models.TextField(max_length=100,null=True);
     test_area= models.CharField(max_length=100,null=True);
@@ -18,14 +18,14 @@ class TestCase(models.Model):
 #    last_pass=models.DateField();
 #    last_fail=models.DateField();
     outcome=models.NullBooleanField();
-    test_caseid = models.IntegerField();
+    test_caseid = models.IntegerField(primary_key=True);
     cr_dt=models.DateTimeField();
     cr_user=models.CharField(max_length=15);
     lst_dt=models.DateTimeField();
     lst_user=models.CharField(max_length=15);
     deleted_flag=models.NullBooleanField(default=False);
     def primary_key(self):
-        return self.test_id
+        return self.test_caseid
     def __unicode__(self):
         return self.swfName
     
